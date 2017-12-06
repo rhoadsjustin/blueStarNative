@@ -87,14 +87,14 @@ addNewFavorite() {
                 <View style={{ flexDirection: 'row'}}>
                 <TextInput
                     id="startDate"
-                    style={{ height: 40, width: 300, borderColor: 'gray', borderWidth: 1 }}
+                        style={{ height: 40, width: 200, borderColor: 'gray', borderWidth: 1, borderRadius: 5, marginRight: 5 }}
                     placeholder="Start Date e.g. 2017-10-10"
                     onChangeText={(startDate) => this.setState({ startDate})}
                     value={this.state.startDate}
                 />
                 <TextInput
                     id="endDate"
-                    style={{ height: 40, width: 300, borderColor: 'gray', borderWidth: 1 }}
+                    style={{ height: 40, width: 200, borderColor: 'gray', borderWidth: 1, borderRadius: 5, marginLeft: 5 }}
                     placeholder="End Date e.g. 2017-10-10"
                     onChangeText={(endDate) => this.setState({ endDate })}
                     value={this.state.endDate}
@@ -104,23 +104,42 @@ addNewFavorite() {
                     large
                     primary
                     onPress={this.getLaunchSchedule}
-                    style={{flex: 0, justifyContent: 'center', marginLeft: 125, width: 150, height: 40}}>
+                    style={{flex: 0, justifyContent: 'center', marginTop: 10, marginLeft: 125, width: 150, height: 40}}>
                         <Text>Search</Text>
                 </Button>
                 <Container>
+                    <View style={{flexDirection: 'row'}}>
+                    <Button
+                        small
+                        success
+                        onPress={this.sortByAgency.bind(this)}
+                        style={{ marginTop: 5, marginRight: 20, justifyContent: 'space-around' }}>
+                    <Text style={{ color: 'white', fontSize: 10 }}>Sort By Agency</Text>
+                    </Button>
+                    <Button
+                        small
+                        success
+                        onPress={this.sortByCountry.bind(this)}
+                        style={{ marginTop: 5, justifyContent: 'space-around' }}>
+                        <Text style={{color: 'white', fontSize: 10}}>Sort By Country</Text>
+                    </Button>
+                    </View>
                 <FlatList
-                data={this.state.launchArray}
-                renderItem={({item})=> 
+                    data={this.state.launchArray}
+                    renderItem={({item})=> 
+                    
                         <LaunchInfoComp
                             id={item.id}
                             launchName={item.name}
                             launchStartTime={item.windowstart}
+                            agencyNames={item.rocket.agencies.name}
+                            agencyAbbr={item.rocket.agencies.abbrev}
                             rocketName={item.rocket.name}
                             launchLocation={item.location.name}
                             countryCode={item.location.countryCode}
                             rocketImage={item.rocket.imageURL}>
                         </LaunchInfoComp>
-                    
+
                 }>
                 </FlatList>
                 </Container>
