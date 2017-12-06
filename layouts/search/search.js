@@ -3,19 +3,20 @@ import LaunchInfoComp from '../../components/launchInfoComp'
 import { observer } from 'mobx-react'
 import { View, Text, TextInput, FlatList, Image } from 'react-native';
 import { Container, Header, Content, Card, CardItem, Thumbnail, Button, Icon, Left, Body, Right } from 'native-base';
-
+import store from '../../mobx/store'
 @observer
-class Search extends Component {
+export default class Search extends Component {
     constructor() {
         super()
         this.state = {
             startDate: '',
             endDate: '',
-            launchArray: []
+            launchArray: [],
+            clicked: "Add to Favorites",
+            isAdded: 'false'
         }
         this.handleChange = this.handleChange.bind(this);
         this.getLaunchSchedule = this.getLaunchSchedule.bind(this);
-        // this.handleAgencyFilter = this.handleAgencyFilter.bind(this);
     }
     //handle the input change for search
     handleChange(e) {
@@ -24,12 +25,20 @@ class Search extends Component {
             [e.target.id]: value
         })
     }
+           
+addNewFavorite() {
+    //function to add new Favorite to the store
+    console.log(this.state)
+    store.addFavorite(this.props);
+    this.setState({
+        clicked: "Favorited",
+        isAdded: true
+    })
+}
 
     getLaunchSchedule() {
         let fetchUrl = 'https://launchlibrary.net/1.2/launch/';
-        console.log(this.state);
         fetchUrl = fetchUrl + this.state.startDate + '/' + this.state.endDate
-        console.log(fetchUrl)
         return fetch(fetchUrl, {
             method: 'GET'
         })
@@ -40,7 +49,6 @@ class Search extends Component {
             }) // Transform the data into json
             .then((data) => {
                 // taking the launch data array to manipulate
-                console.log(data)
                 let launchesList = data.launches
                 this.setState({
                     launchArray: launchesList
@@ -73,54 +81,10 @@ class Search extends Component {
     }
 
     render() {
-        //launch info
-        // const LaunchInfoNodes = this.state.launchArray.map((launch) => {
-        //     //list of agencies
-        //     const agencyNodes = launch.rocket.agencies.map((agency) => {
-        //         var agencyNames = agency.name
-        //         return agencyNames
-        //     })
-        //     const agencyAbbrv = launch.rocket.agencies.map((agency) => {
-        //         return agency.abbrev
-        //     })
-        //     return (
-        //         <LaunchInfoComp
-        //             //unique id for iterator
-        //             key={launch.id}
-        //             launchName={launch.name}
-        //             launchStartTime={launch.windowstart}
-        //             agencyInfoNames={agencyNodes}
-        //             agencyAbbr={agencyAbbrv}
-        //             rocketName={launch.rocket.name}
-        //             launchLocation={launch.location.name}
-        //             countryCode={launch.location.countryCode}
-        //             rocketImage={launch.rocket.imageURL}>
-        //         </LaunchInfoComp>
-        //     )
-        // });
-
         return (
-            // <div>
-            //     <div>
-            //         <div className="col-md-8 offset-md-2" id="searchInput">
-            //             <input type="text" id="startDate" value={this.state.startDate} onChange={this.handleChange} placeholder="Start Date eg.2015-08-20 " />
-            //             <input type="text" id="endDate" value={this.state.endDate} onChange={this.handleChange} placeholder="End Date eg.2015-08-28" />
-            //             <button
-            //                 onClick={this.getLaunchSchedule}>
-            //                 Search
-            //             </button>
-            //         </div>
-            //     </div>
-            //     <div>
-            //         <div className="center-align">
-            //             <button onClick={this.sortByCountry.bind(this)}>Sort By Country</button>
-            //             <button onClick={this.sortByAgency.bind(this)}>Sort By Agency</button>
-            //         </div>
-            //         {LaunchInfoNodes}
-            //     </div>
-            // </div>
             <View style={{ flex: 1, alignItems: 'center', flexDirection: 'column', marginTop: 25}}>
                 <Text style={{fontSize: 30 }}>Search Screen</Text>
+                <View style={{ flexDirection: 'row'}}>
                 <TextInput
                     id="startDate"
                     style={{ height: 40, width: 300, borderColor: 'gray', borderWidth: 1 }}
@@ -135,6 +99,7 @@ class Search extends Component {
                     onChangeText={(endDate) => this.setState({ endDate })}
                     value={this.state.endDate}
                 />
+                </View>
                 <Button
                     large
                     primary
@@ -144,42 +109,24 @@ class Search extends Component {
                 </Button>
                 <Container>
                 <FlatList
-                    data={this.state.launchArray}
-                    renderItem={({ item }) => 
-                                // <LaunchInfoComp   
-                                //         key={item.id}
-                                //         launchName={item.name}
-                                //         launchStartTime={item.windowstart}
-                                //      /* agencyInfoNames={item}
-                                //         agencyAbbr={agencyAbbrv} */
-                                //         rocketName={item.rocket.name}
-                                //         launchLocation={item.location.name}
-                                //         countryCode={item.location.countryCode}
-                                //         rocketImage={item.location.countryCode}>
-                                //         </LaunchInfoComp>
-                            <Content key={item.id}>
-                                <Card id={item.location.countryCode}>
-                                    <CardItem >
-                                        <CardItem cardBody style={{ flexDirection: 'column'}}>
-                                            <Image source={{ uri: item.location.countryCode }} alt="Rocket" />
-                                            <Text>{item.rocket.name}</Text>
-                                            <Text>Launch Name:{item.name}</Text>
-                                            <Text>Launch Start:{item.windowstart}</Text>
-                                            <Text>Launch Location:{item.location.name}</Text>
-                                            <Text>Agencies: {this.props.agencyInfoNames} </Text>
-                                            {/* <Button onClick={this.props.isFavorited ? this.removeFromFavorites.bind(this) : this.addNewFavorite.bind(this)}>
-                                                <Text>{this.props.isFavorited ? "Remove Favorite" : this.state.clicked}</Text>
-                                            </Button> */}
-                                        </CardItem>
-                                    </CardItem>
-                                </Card>
-                            </Content>
-                        }
-                /> 
+                data={this.state.launchArray}
+                renderItem={({item})=> 
+                        <LaunchInfoComp
+                            id={item.id}
+                            launchName={item.name}
+                            launchStartTime={item.windowstart}
+                            rocketName={item.rocket.name}
+                            launchLocation={item.location.name}
+                            countryCode={item.location.countryCode}
+                            rocketImage={item.rocket.imageURL}>
+                        </LaunchInfoComp>
+                    
+                }>
+                </FlatList>
                 </Container>
             </View>
         )
     }
 }
 
-export default Search
+

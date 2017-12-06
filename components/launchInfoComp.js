@@ -15,6 +15,7 @@ class LaunchInfo extends Component {
     }
     addNewFavorite() {
         //function to add new Favorite to the store
+        console.log(store.favorites)
         store.addFavorite(this.props);
         this.setState({
             clicked: "Favorited",
@@ -23,28 +24,26 @@ class LaunchInfo extends Component {
     }
 
     render() {
-        console.log(this.props)
         return (
-            <Container>
-            <Content>
-            <Card  id={this.props.countryCode}>
-                <CardItem id={this.props.launchID}>
-                    <CardItem cardBody>
-                        <Image source={{uri: this.props.rocketImage}} alt="Rocket" />
-                        <Text>{this.props.rocketName}</Text>
-                        <Text>Launch Name:{this.props.launchName}</Text>
-                        <Text>Launch Start:{this.props.launchStartTime}</Text>
-                        <Text>Launch Location:{this.props.launchLocation}</Text>
-                        <Text>Agencies: {this.props.agencyInfoNames} </Text>
-                        <Button onClick={this.props.isFavorited ? this.removeFromFavorites.bind(this) : this.addNewFavorite.bind(this)}>
-                            <Text>{this.props.isFavorited ? "Remove Favorite" : this.state.clicked}</Text>
-                        </Button>
-                    </CardItem>
+            <Content key={this.props.id}>
+             <Card  id={this.props.countryCode} style={{ width: 300}}>
+                <CardItem id={this.props.launchID} cardBody style={{ flexDirection: 'column'}}>
+                        <Image source={{uri: this.props.rocketImage}} style={{ height: 100, width: 100, flex: 1}} alt="Rocket" />
                 </CardItem>
-            </Card>
+                <CardItem style={{ flexDirection: 'column'}}>
+                        <Text style={{ fontSize: 14, fontWeight: 'bold', textAlign: 'left' }}>{this.props.rocketName}</Text>
+                        <Text style={{ alignContent: 'center', fontSize: 10 }}>Launch:</Text>
+                        <Text style={{ alignContent: 'center', fontSize: 10 }}>{this.props.launchName}</Text>
+                        <Text style={{ alignContent: 'center', fontSize: 10 }}>Launched:{this.props.launchStartTime}</Text>
+                        <Text style={{ alignContent: 'center', fontSize: 10 }}>Location:{this.props.launchLocation}</Text>
+                        </CardItem>
+                        <CardItem footer>
+                        <Button onPress={this.addNewFavorite.bind(this)}>
+                            <Text>{this.state.clicked}</Text>
+                        </Button>
+                        </CardItem>
+             </Card>
             </Content>
-            </Container>
-
         )
     }
 }

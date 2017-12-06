@@ -1,5 +1,6 @@
 import React from 'react'
 import Search from '../layouts/search'
+import Favorites from '../layouts/favorites'
 import { TabNavigator } from 'react-navigation'; // 1.0.0-beta.14
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
@@ -18,19 +19,19 @@ const RootTabs = TabNavigator({
             ),
         },
     },
-    // Profile: {
-    //     screen: ProfileScreen,
-    //     navigationOptions: {
-    //         tabBarLabel: 'Profile',
-    //         tabBarIcon: ({ tintColor, focused }) => (
-    //             <Ionicons
-    //                 name={focused ? 'ios-person' : 'ios-person-outline'}
-    //                 size={26}
-    //                 style={{ color: tintColor }}
-    //             />
-    //         ),
-    //     },
-    // },
+    Favorites: {
+        screen: Favorites,
+        navigationOptions: {
+            tabBarLabel: 'Favorites',
+            tabBarIcon: ({ tintColor, focused }) => (
+                <Ionicons
+                    name={focused ? 'ios-person' : 'ios-person-outline'}
+                    size={26}
+                    style={{ color: tintColor }}
+                />
+            ),
+        },
+    },
 });
 
 export default RootTabs;
