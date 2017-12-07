@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import LaunchInfoComp from '../../components/launchInfoComp'
 import { observer } from 'mobx-react'
-import { View, Text, TextInput, FlatList, Image } from 'react-native';
+import { View, Text, TextInput, FlatList, Image, StyleSheet, ImageBackground } from 'react-native';
 import { Container, Header, Content, Card, CardItem, Thumbnail, Button, Icon, Left, Body, Right } from 'native-base';
 import store from '../../mobx/store'
+import background from '../../assets/rocket.gif'
 @observer
 export default class Search extends Component {
     constructor() {
@@ -71,70 +72,97 @@ export default class Search extends Component {
 
     render() {
         return (
+            <ImageBackground source={background} style={{ width: null, height: '100%', marginRight: 15}}>
             <View style={{ flex: 1, alignItems: 'center', flexDirection: 'column', marginTop: 25}}>
-                <Text style={{fontSize: 30 }}>Search Screen</Text>
-                <View style={{ flexDirection: 'row'}}>
-                <TextInput
-                    id="startDate"
-                        style={{ height: 40, width: 200, borderColor: 'gray', borderWidth: 1, borderRadius: 5, marginRight: 5 }}
-                    placeholder="Start Date e.g. 2017-10-10"
-                    onChangeText={(startDate) => this.setState({ startDate})}
-                    value={this.state.startDate}
-                />
-                <TextInput
-                    id="endDate"
-                    style={{ height: 40, width: 200, borderColor: 'gray', borderWidth: 1, borderRadius: 5, marginLeft: 5 }}
-                    placeholder="End Date e.g. 2017-10-10"
-                    onChangeText={(endDate) => this.setState({ endDate })}
-                    value={this.state.endDate}
-                />
+                <View style={{ flexDirection: 'column', alignItems: 'center'}}>
+                    <Text style={{fontSize: 30}}>Search Screen</Text>
+                    <Text style={{fontSize: 20}}>Find Your Launch Schedule Info Below</Text>
                 </View>
-                <Button
-                    large
-                    primary
-                    onPress={this.getLaunchSchedule}
-                    style={{flex: 0, justifyContent: 'center', marginTop: 10, marginLeft: 125, width: 150, height: 40}}>
-                        <Text>Search</Text>
-                </Button>
-                <Container>
-                    <View style={{flexDirection: 'row'}}>
-                    <Button
-                        small
-                        success
-                        onPress={this.sortByAgency.bind(this)}
-                        style={{ marginTop: 5, marginRight: 20, justifyContent: 'space-around' }}>
-                    <Text style={{ color: 'white', fontSize: 10 }}>Sort By Agency</Text>
-                    </Button>
-                    <Button
-                        small
-                        success
-                        onPress={this.sortByCountry.bind(this)}
-                        style={{ marginTop: 5, justifyContent: 'space-around' }}>
-                        <Text style={{color: 'white', fontSize: 10}}>Sort By Country</Text>
-                    </Button>
+                    <View style={{ flexDirection: 'row'}}>
+                    <TextInput
+                        id="startDate"
+                            style={styles.textInput }
+                        placeholder="Start Date e.g. 2017-10-10"
+                        onChangeText={(startDate) => this.setState({ startDate})}
+                        value={this.state.startDate}
+                    />
+                    <TextInput
+                        id="endDate"
+                        style={ styles.textInput }
+                        placeholder="End Date e.g. 2017-10-10"
+                        onChangeText={(endDate) => this.setState({ endDate })}
+                        value={this.state.endDate}
+                    />
                     </View>
-                <FlatList
-                    data={this.state.launchArray}
-                    extraData={this.state}
-                    renderItem={({item})=> 
-                        <LaunchInfoComp
-                            key={item.id}
-                            launchName={item.name}
-                            launchStartTime={item.windowstart}
-                            agencyInfo={item.rocket.agencies}
-                            rocketName={item.rocket.name}
-                            launchLocation={item.location.name}
-                            countryCode={item.location.countryCode}
-                            rocketImage={item.rocket.imageURL}
-                            addFavorite={true}>
-                        </LaunchInfoComp>
+                    <Button
+                        large
+                        primary
+                        onPress={this.getLaunchSchedule}
+                        style={{flex: 0,flexDirection: 'row', justifyContent: 'center',marginTop: 10, alignSelf: 'center', width: 150, height: 40}}>
+                            <Text>Search</Text>
+                    </Button>
+                    <Container>
+                        <View style={{flexDirection: 'row'}}>
+                        <Button
+                            small
+                            success
+                            onPress={this.sortByAgency.bind(this)}
+                            style={styles.sortButton}>
+                        <Text style={{ color: 'white', fontSize: 10 }}>Sort By Agency</Text>
+                        </Button>
+                        <Button
+                            small
+                            success
+                            onPress={this.sortByCountry.bind(this)}
+                            style={styles.sortButton }>
+                            <Text style={{color: 'white', fontSize: 10}}>Sort By Country</Text>
+                        </Button>
+                        </View>
+                    <FlatList
+                        data={this.state.launchArray}
+                        extraData={this.state}
+                        renderItem={({item})=> 
+                            <LaunchInfoComp
+                                key={item.id}
+                                launchName={item.name}
+                                launchStartTime={item.windowstart}
+                                agencyInfo={item.rocket.agencies}
+                                rocketName={item.rocket.name}
+                                launchLocation={item.location.name}
+                                countryCode={item.location.countryCode}
+                                rocketImage={item.rocket.imageURL}
+                                addFavorite={true}>
+                            </LaunchInfoComp>
 
-                }>
-                </FlatList>
-                </Container>
+                    }>
+                    </FlatList>
+                    </Container>
             </View>
+                </ImageBackground>
         )
     }
 }
 
+const styles = StyleSheet.create({
+    backgroundImage: {
+        flex: 1,
+        width: null,
+        height: null,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+
+    text: {
+        textAlign: 'center',
+        color: 'white',
+        backgroundColor: 'rgba(0,0,0,0)',
+        fontSize: 32
+    },
+    textInput: {
+        height: 40, width: 175, borderColor: 'gray', borderWidth: 1, borderRadius: 5, marginRight: 5, marginTop: 10
+    },
+    sortButton: {
+        marginTop: 5, marginRight: 10, justifyContent: 'center', width: 100
+    }
+});
 

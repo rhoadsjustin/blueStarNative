@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { observer } from 'mobx-react'
 import store from '../../mobx/store'
-import { View, Text, TextInput, FlatList, Image } from 'react-native';
+import { View, Text, TextInput, FlatList, Image, ImageBackground } from 'react-native';
 import { Container, Header, Content, Card, CardItem, Thumbnail, Button, Icon, Left, Body, Right } from 'native-base';
-
+import LaunchInfoComp from '../../components/launchInfoComp'
+import background from '../../assets/rocket.gif'
 @observer
 
 export default class Favorites extends Component {
@@ -26,7 +27,8 @@ export default class Favorites extends Component {
 
         ));
         return (
-            <View style={{ flex: 1, alignItems: 'center', flexDirection: 'column', marginTop: 25 }}>
+            <ImageBackground source={background} style={{width: null, height: '100%', marginRight: 15}}>
+           <View style={{ flex: 1, alignItems: 'center', flexDirection: 'column', marginTop: 25 }}>
                     <Text style={{ fontSize: 30 }}>Favorites</Text>
                         <Container>
                             {store.favorites.map(favorite => (
@@ -34,6 +36,7 @@ export default class Favorites extends Component {
                             ))}
                         </Container>
                 </View>
+                </ImageBackground>
             
         )
     }

@@ -17,9 +17,11 @@ class Favorite {
         this.launchName = obj.launchName;
         this.launchStartTime = obj.launchStartTime
         this.agencyInfo = obj.agencyInfo
+        //map function to get to the list of agency names
         this.agencyNames = obj.agencyInfo.map((agency)=>{
             return agency.name
         })
+        //map function to get the abbreviations for the agency
         this.agencyAbbrev = obj.agencyInfo.map((agency)=>{
             return agency.abbrev
         })
