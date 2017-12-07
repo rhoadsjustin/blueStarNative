@@ -4,8 +4,9 @@ class Favorite {
     id = Math.random();
     @observable launchName;
     @observable launchStartTime;
-    @observable agencyInfoNames;
-    @observable agencyAbbr;
+    @observable agencyInfo;
+    @observable agencyNames;
+    @observable agencyAbbrev;
     @observable rocketName;
     @observable launchLocation;
     @observable countryCode;
@@ -15,8 +16,13 @@ class Favorite {
     constructor(obj) {
         this.launchName = obj.launchName;
         this.launchStartTime = obj.launchStartTime
-        this.agencyInfoNames = obj.agencyInfoNames
-        this.agencyAbbr = obj.agencyAbbrv
+        this.agencyInfo = obj.agencyInfo
+        this.agencyNames = obj.agencyInfo.map((agency)=>{
+            return agency.name
+        })
+        this.agencyAbbrev = obj.agencyInfo.map((agency)=>{
+            return agency.abbrev
+        })
         this.rocketName = obj.rocketName
         this.launchLocation = obj.launchLocation
         this.countryCode = obj.countryCode

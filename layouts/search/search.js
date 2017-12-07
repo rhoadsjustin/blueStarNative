@@ -25,16 +25,6 @@ export default class Search extends Component {
             [e.target.id]: value
         })
     }
-           
-addNewFavorite() {
-    //function to add new Favorite to the store
-    console.log(this.state)
-    store.addFavorite(this.props);
-    this.setState({
-        clicked: "Favorited",
-        isAdded: true
-    })
-}
 
     getLaunchSchedule() {
         let fetchUrl = 'https://launchlibrary.net/1.2/launch/';
@@ -66,7 +56,6 @@ addNewFavorite() {
         this.setState({
             launchArray: FilteredList
         })
-        console.log(FilteredList, this.state.launchArray)
     }
     sortByCountry() {
         //sort by the country code
@@ -126,18 +115,18 @@ addNewFavorite() {
                     </View>
                 <FlatList
                     data={this.state.launchArray}
+                    extraData={this.state}
                     renderItem={({item})=> 
-                    
                         <LaunchInfoComp
-                            id={item.id}
+                            key={item.id}
                             launchName={item.name}
                             launchStartTime={item.windowstart}
-                            agencyNames={item.rocket.agencies.name}
-                            agencyAbbr={item.rocket.agencies.abbrev}
+                            agencyInfo={item.rocket.agencies}
                             rocketName={item.rocket.name}
                             launchLocation={item.location.name}
                             countryCode={item.location.countryCode}
-                            rocketImage={item.rocket.imageURL}>
+                            rocketImage={item.rocket.imageURL}
+                            addFavorite={true}>
                         </LaunchInfoComp>
 
                 }>
