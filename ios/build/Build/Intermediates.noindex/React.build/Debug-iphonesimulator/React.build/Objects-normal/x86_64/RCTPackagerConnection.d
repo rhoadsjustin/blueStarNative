@@ -1,0 +1,29 @@
+dependencies: \
+  /Users/justinrhoads/wdi/bluestarapp-native/node_modules/react-native/React/DevSupport/RCTPackagerConnection.m \
+  /Users/justinrhoads/wdi/bluestarapp-native/node_modules/react-native/React/DevSupport/RCTPackagerConnection.h \
+  /Users/justinrhoads/wdi/bluestarapp-native/node_modules/react-native/React/Base/RCTDefines.h \
+  /Users/justinrhoads/wdi/bluestarapp-native/node_modules/react-native/React/Base/RCTAssert.h \
+  /Users/justinrhoads/wdi/bluestarapp-native/node_modules/react-native/React/Base/RCTBridge.h \
+  /Users/justinrhoads/wdi/bluestarapp-native/node_modules/react-native/React/Base/RCTBridgeDelegate.h \
+  /Users/justinrhoads/wdi/bluestarapp-native/node_modules/react-native/React/Base/RCTJavaScriptLoader.h \
+  /Users/justinrhoads/wdi/bluestarapp-native/node_modules/react-native/React/Base/RCTBridgeModule.h \
+  /Users/justinrhoads/wdi/bluestarapp-native/node_modules/react-native/React/Base/RCTFrameUpdate.h \
+  /Users/justinrhoads/wdi/bluestarapp-native/node_modules/react-native/React/Base/RCTInvalidating.h \
+  /Users/justinrhoads/wdi/bluestarapp-native/node_modules/react-native/React/Base/RCTBundleURLProvider.h \
+  /Users/justinrhoads/wdi/bluestarapp-native/node_modules/react-native/React/Base/RCTConvert.h \
+  /Users/justinrhoads/wdi/bluestarapp-native/node_modules/react-native/React/Views/RCTAnimationType.h \
+  /Users/justinrhoads/wdi/bluestarapp-native/node_modules/react-native/React/Views/RCTBorderStyle.h \
+  /Users/justinrhoads/wdi/bluestarapp-native/node_modules/react-native/React/Base/RCTLog.h \
+  /Users/justinrhoads/wdi/bluestarapp-native/node_modules/react-native/React/Base/RCTUtils.h \
+  /Users/justinrhoads/wdi/bluestarapp-native/node_modules/react-native/React/Views/RCTPointerEvents.h \
+  /Users/justinrhoads/wdi/bluestarapp-native/node_modules/react-native/React/Views/RCTTextDecorationLineType.h \
+  /Users/justinrhoads/wdi/bluestarapp-native/ios/build/Build/Products/Debug-iphonesimulator/include/yoga/Yoga.h \
+  /Users/justinrhoads/wdi/bluestarapp-native/ios/build/Build/Products/Debug-iphonesimulator/include/yoga/YGEnums.h \
+  /Users/justinrhoads/wdi/bluestarapp-native/ios/build/Build/Products/Debug-iphonesimulator/include/yoga/YGMacros.h \
+  /Users/justinrhoads/wdi/bluestarapp-native/node_modules/react-native/React/../Libraries/WebSocket/RCTReconnectingWebSocket.h \
+  /Users/justinrhoads/wdi/bluestarapp-native/node_modules/react-native/React/../Libraries/WebSocket/RCTSRWebSocket.h \
+  /Users/justinrhoads/wdi/bluestarapp-native/node_modules/react-native/React/DevSupport/RCTPackagerConnectionBridgeConfig.h \
+  /Users/justinrhoads/wdi/bluestarapp-native/node_modules/react-native/React/DevSupport/RCTPackagerConnectionConfig.h \
+  /Users/justinrhoads/wdi/bluestarapp-native/node_modules/react-native/React/DevSupport/RCTReloadPackagerMethod.h \
+  /Users/justinrhoads/wdi/bluestarapp-native/node_modules/react-native/React/DevSupport/RCTPackagerClient.h \
+  /Users/justinrhoads/wdi/bluestarapp-native/node_modules/react-native/React/DevSupport/RCTSamplingProfilerPackagerMethod.h

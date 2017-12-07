@@ -1,0 +1,22 @@
+dependencies: \
+  /Users/justinrhoads/wdi/bluestarapp-native/node_modules/react-native/React/Modules/RCTDevSettings.mm \
+  /Users/justinrhoads/wdi/bluestarapp-native/node_modules/react-native/React/Modules/RCTDevSettings.h \
+  /Users/justinrhoads/wdi/bluestarapp-native/node_modules/react-native/React/Base/RCTBridge.h \
+  /Users/justinrhoads/wdi/bluestarapp-native/node_modules/react-native/React/Base/RCTBridgeDelegate.h \
+  /Users/justinrhoads/wdi/bluestarapp-native/node_modules/react-native/React/Base/RCTJavaScriptLoader.h \
+  /Users/justinrhoads/wdi/bluestarapp-native/node_modules/react-native/React/Base/RCTDefines.h \
+  /Users/justinrhoads/wdi/bluestarapp-native/node_modules/react-native/React/Base/RCTBridgeModule.h \
+  /Users/justinrhoads/wdi/bluestarapp-native/node_modules/react-native/React/Base/RCTFrameUpdate.h \
+  /Users/justinrhoads/wdi/bluestarapp-native/node_modules/react-native/React/Base/RCTInvalidating.h \
+  /Users/justinrhoads/wdi/bluestarapp-native/ios/build/Build/Products/Debug-iphonesimulator/include/jschelpers/JavaScriptCore.h \
+  /Users/justinrhoads/wdi/bluestarapp-native/ios/build/Build/Products/Debug-iphonesimulator/include/jschelpers/JSCWrapper.h \
+  /Users/justinrhoads/wdi/bluestarapp-native/node_modules/react-native/React/Base/RCTBridge+Private.h \
+  /Users/justinrhoads/wdi/bluestarapp-native/node_modules/react-native/React/Base/RCTEventDispatcher.h \
+  /Users/justinrhoads/wdi/bluestarapp-native/node_modules/react-native/React/Modules/RCTJSCSamplingProfiler.h \
+  /Users/justinrhoads/wdi/bluestarapp-native/node_modules/react-native/React/Base/RCTJSEnvironment.h \
+  /Users/justinrhoads/wdi/bluestarapp-native/node_modules/react-native/React/Base/RCTLog.h \
+  /Users/justinrhoads/wdi/bluestarapp-native/node_modules/react-native/React/Base/RCTAssert.h \
+  /Users/justinrhoads/wdi/bluestarapp-native/node_modules/react-native/React/Base/RCTUtils.h \
+  /Users/justinrhoads/wdi/bluestarapp-native/node_modules/react-native/React/Profiler/RCTProfile.h \
+  /Users/justinrhoads/wdi/bluestarapp-native/node_modules/react-native/React/DevSupport/RCTPackagerConnection.h \
+  /Users/justinrhoads/wdi/bluestarapp-native/node_modules/react-native/React/DevSupport/RCTInspectorDevServerHelper.h

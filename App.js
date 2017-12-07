@@ -11,17 +11,6 @@ export default class App extends React.Component {
       isReady: false,
     }
   }
-  // async componentWillMount() {
-  //   // await Font.loadAsync({
-  //   //   'ESPN-BoldItl': require('./assets/fonts/esp_bdit.ttf'),
-  //   //   'ESPN-Bold': require('./assets/fonts/esp_bold.ttf'),
-  //   //   'ESPN-Itl': require('./assets/fonts/esp_ital.ttf'),
-  //   //   'ESPN': require('./assets/fonts/esp.ttf'),
-
-  //   // });
-
-  //   this.setState({ isReady: true });
-  // }
 
 
 
